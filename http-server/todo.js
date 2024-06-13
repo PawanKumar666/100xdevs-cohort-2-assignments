@@ -15,7 +15,7 @@ app.get("/todos", (req, res) => {
 });
 
 // Add a new todo via URL parameter
-app.get("/todos/:task", (req, res) => {
+app.post("/todos/:task", (req, res) => {
   const { task } = req.params;
   if (task) {
     const newTodo = { id: uuidv4(), task, completed: false };
