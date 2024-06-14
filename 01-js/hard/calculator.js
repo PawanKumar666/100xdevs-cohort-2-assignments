@@ -16,6 +16,46 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+// This will fail on division by zero. It needs to be updated
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+  add(number) {
+    this.result += number;
+  }
+  subtract(number) {
+    this.result -= number;
+  }
+  multiply(number) {
+    this.result *= number;
+  }
+  divide(number) {
+    this.result /= number;
+  }
+  clear() {
+    this.result = 0;
+  }
+  getResult() {
+    return this.result;
+  }
+  calculate(stringExpression) {
+    // Remove extra spaces
+    const cleanedExpression = stringExpression.replace(/\s+/g, "");
+
+    // Validate the expression
+    if (!/^[\d+\-*/().\s]+$/.test(cleanedExpression)) {
+      throw new Error("Invalid characters in expression");
+    }
+
+    try {
+      // Evaluate the expression
+      this.result = eval(cleanedExpression);
+      return this.result;
+    } catch (error) {
+      throw new Error("Invalid expression");
+    }
+  }
+}
 
 module.exports = Calculator;
