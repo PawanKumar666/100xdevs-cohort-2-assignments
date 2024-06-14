@@ -9,5 +9,22 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
-    return 0.01;
+  let res = 0;
+  const startTime = new Date().getTime();
+  // res = (input * (input + 1)) / 2;
+  for (let i = 0; i < n; i++) {
+    res += i;
+  }
+  const endTime = new Date().getTime();
+  console.log(`Start time ${startTime}. End Time: ${endTime}`);
+  time_taken = endTime - startTime;
+  console.log("Time taken in seconds:" + time_taken / 1000);
+  return res;
+}
+
+inputs = [100, 100000, 100000000, 1000000000];
+for (input in inputs) {
+  console.log(
+    `Sum from 1 to ${inputs[input]} is: ` + calculateTime(inputs[input])
+  );
 }
