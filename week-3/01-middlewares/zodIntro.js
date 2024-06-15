@@ -4,10 +4,19 @@ const zod = require("zod");
 const app = express();
 app.use(express.json());
 
-const schema = zod.array(zod.string()); // Input should be an array of strings
+const schemaValues = zod.array(zod.string()); // Input should be an array of strings
 
+const validateNameParamInBody = (value) =>
+  ["pawan", "kumar"].includes(value.toLowerCase());
+
+const entireBodySchema = zod.object({
+  values: schemaValues,
+  name: zod.string().refine(validateNameParamInBody, {
+    message: "Name must be 'pawan' or 'kumar' (case insensitive)",
+  }), // Case insensitive check
+});
 app.post("/", (req, res) => {
-  bodyValues = schema.safeParse(req.body.values);
+  bodyValues = entireBodySchema.safeParse(req.body);
   if (!bodyValues) {
     return res.status(400).json({ error: "Invalid input" });
   } else {
