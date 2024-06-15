@@ -2,11 +2,13 @@
     <title>The Page</title>
 </html>
 <body>
+    <div id="container"></div>
     <script>
         function getPersonsData(){
             fetch("https://fakerapi.it/api/v1/persons").then((response) => {
                 response.json().then((extractedData) => {
                     console.log(extractedData);
+                    document.getElementById("container").innerHTML = JSON.stringify(extractedData.data);
                 })
             })
         }
