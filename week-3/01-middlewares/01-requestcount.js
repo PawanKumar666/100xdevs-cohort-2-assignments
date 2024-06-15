@@ -15,15 +15,18 @@ function middleware(req, res, next) {
   next();
 }
 
-app.get("/user", middleware, function (req, res) {
+app.use(express.json());
+app.use(middleware);
+
+app.get("/user", function (req, res) {
   res.status(200).json({ name: "john" });
 });
 
-app.post("/user", middleware, function (req, res) {
+app.post("/user", function (req, res) {
   res.status(200).json({ msg: "created dummy user" });
 });
 
-app.get("/requestCount", middleware, function (req, res) {
+app.get("/requestCount", function (req, res) {
   res.status(200).json({ requestCount });
 });
 
