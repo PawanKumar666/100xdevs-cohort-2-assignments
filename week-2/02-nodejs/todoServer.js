@@ -39,11 +39,107 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+
+const fs = require("fs");
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+
+app.use(bodyParser.json());
+const todoFilePath = "./todos.json";
+
+app.get("/todos", (req, res) => {
+  fs.readFile(todoFilePath, "utf-8", (err, data) => {
+    if (err) {
+      return res.status(404).json({ message: "Error in reading file" });
+    } else {
+      return res.status(200).json(JSON.parse(data));
+    }
+  });
+});
+
+app.get("/todos/:id", (req, res) => {
+  fs.readFile(todoFilePath, "utf-8", (err, data) => {
+    if (err) {
+      return res.status(404).json({ message: "Error in reading file" });
+    } else {
+      let todo = JSON.parse(data);
+      let targetTodo = todo.find((item) => item.id === req.params.id);
+      if (targetTodo) {
+        return res
+          .status(200)
+          .json({ message: "Successfully retrieved todo", data: targetTodo });
+      } else {
+        return res.status(404).json({ message: "Not found" });
+      }
+    }
+  });
+});
+
+app.put("/todos/:id", (req, res) => {
+  const body = req.params.body;
+  fs.readFile(todoFilePath, "utf-8", (err, data) => {
+    if (err) {
+      return res.status(404).json({ message: "Error in reading file" });
+    } else {
+      let todos = JSON.parse(data);
+      let targetTodo = todos.find((item) => item.id === req.params.id);
+      if (targetTodo) {
+        targetTodo = { ...body };
+        let updatedTodo = [
+          todos.filter((item) => item.id !== req.params.id),
+          targetTodo,
+        ];
+        writeFile(todoFilePath, updatedTodo);
+        return res
+          .status(200)
+          .json({ message: "Successfully updated todo", data: targetTodo });
+      } else {
+        return res.status(500).message("Target todo item not found");
+      }
+    }
+  });
+});
+
+app.post("/todos", (req, res) => {
+  const body = req.params.body;
+  fs.readFile(todoFilePath, "utf-8", (err, data) => {
+    if (err) {
+      return res.status(404).json({ message: "Error in reading file" });
+    } else {
+      let todos = JSON.parse(data);
+      let updatedTodos = [...todos, ...body]; // Ideally the data should be validated
+      writeFile(todoFilePath, updatedTodos);
+      return res.status(200);
+    }
+  });
+});
+
+app.delete("/todos/:id", (req, res) => {
+  const deleteId = req.params.id;
+  fs.readFile(todoFilePath, (err, data) => {
+    if (err) {
+      return res.status(500).message("Error reading file");
+    } else {
+      let todos = JSON.parse(data);
+      let updatedTodos = todos.filter((item) => item.id !== deleteId);
+      writeFile(todoFilePath, updatedTodos);
+      return res.status(200);
+    }
+  });
+});
+
+function writeFile(path, updatedTodo) {
+  fs.writeFile(path, JSON.stringify(updatedTodo), (err) => {
+    if (err) {
+      console.error("Error writing to file:", err);
+    } else {
+      console.log("File successfully written");
+    }
+  });
+}
+
+app.post("/todos");
+
+module.exports = app;
