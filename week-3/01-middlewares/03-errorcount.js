@@ -13,6 +13,8 @@ function errorCounterMiddleware(err, req, res, next) {
   errorCount++;
   res.sendStatus(404);
 }
+app.use(express.json());
+
 app.get("/user", function (req, res) {
   const err = new Error("User not found");
   next(err);
@@ -26,6 +28,6 @@ app.get("/errorCount", function (req, res) {
   res.status(200).json({ errorCount });
 });
 
-app.use(errorCounterMiddleware);
+app.use(errorCounterMiddleware); // Middlewares are executed in the order they were added to the express server
 
 module.exports = app;
