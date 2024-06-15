@@ -6,6 +6,8 @@ app.use(express.json());
 
 const schemaValues = zod.array(zod.string()); // Input should be an array of strings
 
+// Refer zod documantation for more info - https://zod.dev/
+
 const validateNameParamInBody = (value) =>
   ["pawan", "kumar"].includes(value.toLowerCase());
 
