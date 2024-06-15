@@ -16,8 +16,7 @@ function errorCounterMiddleware(err, req, res, next) {
 app.use(express.json());
 
 app.get("/user", function (req, res) {
-  const err = new Error("User not found");
-  next(err);
+  throw new Error("User not found");
 });
 
 app.post("/user", function (req, res) {
