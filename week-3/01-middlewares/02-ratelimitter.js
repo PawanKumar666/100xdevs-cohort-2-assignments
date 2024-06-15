@@ -16,6 +16,9 @@ setInterval(() => {
   numberOfRequestsForUser = {};
 }, 1000);
 
+app.use(express.json()); // To handle post's
+app.use(rateLimiterMiddleware);
+
 function rateLimiterMiddleware(req, res, next) {
   userId = req.headers.user_id;
   if (numberOfRequestsForUser.hasOwnProperty(userId)) {
@@ -33,11 +36,11 @@ function rateLimiterMiddleware(req, res, next) {
   }
 }
 
-app.get("/user", rateLimiterMiddleware, function (req, res) {
+app.get("/user", function (req, res) {
   res.status(200).json({ name: "john" });
 });
 
-app.post("/user", rateLimiterMiddleware, function (req, res) {
+app.post("/user", function (req, res) {
   res.status(200).json({ msg: "created dummy user" });
 });
 
