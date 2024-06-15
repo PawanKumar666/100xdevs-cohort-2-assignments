@@ -1,0 +1,15 @@
+<html>
+    <title>The Page</title>
+</html>
+<body>
+    <script>
+        function getPersonsData(){
+            fetch("https://fakerapi.it/api/v1/persons").then((response) => {
+                response.json().then((extractedData) => {
+                    console.log(extractedData);
+                })
+            })
+        }
+    </script>
+    <button onclick="getPersonsData()">Get Persons Data</button>
+</body>
