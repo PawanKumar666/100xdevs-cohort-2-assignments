@@ -17,9 +17,7 @@ app.post("/", (req, res) => {
   const email = body.data.email;
   const password = body.data.password;
   console.log(body);
-  mongoose.connect(
-    "mongodb+srv://ssppawankumar001:Ov5RRzaniXGfeyuX@pawans-clsuter.cp7pcjk.mongodb.net/user_metainfo"
-  );
+  mongoose.connect("your-mongodb-url");
   const User = mongoose.model("User", {
     name: String,
     email: String,
