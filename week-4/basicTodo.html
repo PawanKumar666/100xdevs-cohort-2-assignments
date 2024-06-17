@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Todo</title>
+    <style>
+        .todo {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .done {
+            text-decoration: line-through;
+        }
+        .button-done {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="text" placeholder="Enter Todo" id="todo-title">
+    <br />
+    <input type="text" placeholder="Enter Description" id="todo-desc">
+    <br />
+    <button id="addTodoBtn" onclick="addTodo()">Add Todo</button>
+    <div id="container"></div>
+
+    <script>
+        let numOfTodos = 0;
+        
+        function removeTodo(id){
+            const parent = document.getElementById("container")
+            parent.removeChild(document.getElementById(id))
+        }
+        function markAsDone(id){
+            const todoDiv = document.getElementById(id);
+            const childButton = todoDiv.getElementsByTagName("button")[0];
+            childButton.innerHTML = "Done";
+            childButton.classList.add("button-done");
+            todoDiv.classList.add("done");
+        }
+
+        function addTodo(){
+            const todoTitle = document.getElementById("todo-title").value;
+            const todoDesc = document.getElementById("todo-desc").value;
+
+            const todoDiv = document.createElement('div');
+            todoDiv.className = 'todo';
+            todoDiv.id = ++numOfTodos;
+
+            const todoTitleInDiv = document.createElement('h3');
+            todoTitleInDiv.textContent = todoTitle;
+            const todoDescription = document.createElement('p');
+            todoDescription.textContent = todoDesc;
+
+            const todoButton = document.createElement('button');
+            todoButton.setAttribute("onclick", `markAsDone(${todoDiv.id})`);
+            todoButton.innerHTML = 'Mark as Done';
+
+            const removeButton = document.createElement("button");
+            removeButton.setAttribute("onclick", `removeTodo(${todoDiv.id})`)
+            removeButton.innerHTML = 'Remove';
+
+            todoDiv.appendChild(todoTitleInDiv);
+            todoDiv.appendChild(todoDescription);
+            todoDiv.appendChild(todoButton);
+            todoDiv.appendChild(removeButton);
+            document.getElementById("container").appendChild(todoDiv);
+
+            // Clear input fields and disable the button
+            document.getElementById("todo-title").value = '';
+            document.getElementById("todo-desc").value = '';
+            document.getElementById("addTodoBtn").disabled = true;
+        }
+
+        function checkInput(){
+            const todoTitle = document.getElementById("todo-title").value;
+            const todoDesc = document.getElementById("todo-desc").value;
+            const btn = document.getElementById("addTodoBtn");
+            btn.disabled = !(todoTitle && todoDesc);
+        }
+
+        window.onload = () => {
+            document.getElementById("todo-title").addEventListener("input", checkInput);
+            document.getElementById("todo-desc").addEventListener("input", checkInput);
+            document.getElementById('addTodoBtn').disabled = true;
+        }
+    </script>
+</body>
+</html>
