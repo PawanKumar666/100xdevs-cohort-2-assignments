@@ -1,0 +1,34 @@
+<head>
+    <title>Add two numbers</title>
+</head>
+<body>
+    <script>
+        function addTwoNumbers(){
+            const firstNumber = parseInt(document.getElementById('firstNum').value)
+            const secondNumber = parseInt(document.getElementById('secondNum').value)
+            document.getElementById("result").innerHTML = firstNumber + secondNumber
+        }
+
+        function checkInput() {
+            const firstNumber = document.getElementById('firstNum').value;
+            const secondNumber = document.getElementById('secondNum').value;
+            const button = document.getElementById('enableButton');
+            if (firstNumber !== "" && secondNumber !== "") {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById('firstNum').addEventListener('input', checkInput);
+            document.getElementById('secondNum').addEventListener('input', checkInput);
+            document.getElementById('enableButton').disabled = true; // Initially disable the button
+        };
+    </script>
+    <input type = "number" placeholder="First num" id = "firstNum"/>
+    <br/>
+    <input type = "number" placeholder="Second num" id = "secondNum"/>
+    <button id = "enableButton" onclick = "addTwoNumbers()">Add Two Numbers</button>
+    <p id = "result"></p>
+</body>
