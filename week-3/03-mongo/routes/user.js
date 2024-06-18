@@ -67,6 +67,10 @@ router.get("/purchasedCourses", userMiddleware, async (req, res) => {
       $in: purchasedCourses,
     },
   });
+  console.log("Fetching purchased courses for user:", username);
+  console.log("User found:", targetUser);
+  console.log("Purchased courses IDs:", purchasedCourses);
+  console.log("Courses found:", courses);
 
   res.json({
     courses: courses,
