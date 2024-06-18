@@ -4,9 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const countState = useState(1);
-  const count = countState[0];
-  const setCount = countState[1];
+  const [count, setCount] = useState(1);
 
   return (
     <>
@@ -20,9 +18,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count * (count + 1))}>
-          count is {count}
-        </button>
+        <SimpleButtonComponent count={count} setCount={setCount} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -32,6 +28,13 @@ function App() {
       </p>
     </>
   )
+}
+
+function SimpleButtonComponent(props){
+  function onClick(){
+    props.setCount(props.count * (props.count + 1));
+  }
+  return <button onClick={onClick}>Count {props.count}</button>
 }
 
 export default App
