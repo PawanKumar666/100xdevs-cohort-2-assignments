@@ -84,6 +84,7 @@ function Authenticate({role, action}){
   );
 }
 
+// TODO : Handle routing and authentication
 function handleAuthentication(role, action, username, password){
   if (role === 'admin'){
     if (action === 'signup'){
