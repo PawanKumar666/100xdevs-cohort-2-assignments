@@ -1,3 +1,5 @@
+// Handles the authentication for the user
+
 const User = require("../models");
 
 const userMiddleware = async (req, res, next) => {

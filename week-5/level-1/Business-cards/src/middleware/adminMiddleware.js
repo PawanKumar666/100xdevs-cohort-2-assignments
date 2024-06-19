@@ -1,3 +1,5 @@
+// Handles the authentication for the admin
+
 const Admin = require("../models");
 
 const adminMiddleware = async (req, res, next) => {

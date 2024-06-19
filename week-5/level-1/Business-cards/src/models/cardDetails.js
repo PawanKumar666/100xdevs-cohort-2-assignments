@@ -1,3 +1,5 @@
+// This file contains the schema for the user card related models
+
 const mongoose = require("mongoose");
 
 const UserCardSchema = new mongoose.Schema({

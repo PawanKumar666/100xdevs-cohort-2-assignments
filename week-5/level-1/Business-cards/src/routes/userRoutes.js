@@ -1,3 +1,5 @@
+// This file contains the routes for the user
+
 const userMiddleware = require("../middleware");
 const express = require("express");
 const User = require("../models");

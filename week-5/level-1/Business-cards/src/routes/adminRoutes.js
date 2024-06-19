@@ -1,3 +1,5 @@
+// This file contains the routes for the admin
+
 import {Admin, User, UserCard} from "../models";
 
 const AdminMiddleware = require("../middleware");

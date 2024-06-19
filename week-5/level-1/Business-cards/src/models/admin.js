@@ -1,3 +1,5 @@
+// This file contains the schema for admin related models
+
 const mongoose = require("mongoose")
 
 const AdminSchema = new mongoose.Schema({
