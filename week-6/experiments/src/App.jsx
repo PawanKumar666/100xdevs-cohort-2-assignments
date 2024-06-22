@@ -16,7 +16,7 @@ function App() {
 
 function Header({title, index}){
   return (
-    <h1>{title}</h1>
+    <h1 style={{color: "red", fontSize: "20px", padding: "10px", margin: "10px"}}>{title}</h1>
   )
 }
 
