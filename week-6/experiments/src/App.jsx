@@ -3,7 +3,8 @@ import './App.css'
 
 function App() {
   const [titles, setTitles] = useState(["Title 1", "Title 2", "Title 3"])
-
+  // We cant return multiple elements in react
+  // So we need to return a single element
   return (
     <>
     <div>
