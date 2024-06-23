@@ -9,16 +9,16 @@ function App() {
     //<> both this and <React.Fragment> are same and doesn't add any extra html tag
     <>
       <button onClick={() => setRandomName(Math.random())}>Click me</button>
-      <RandomTitle title={titles[0]} randomName={randomName} />
+      <RandomTitle title={randomName} />
+      <RandomTitle title={titles[0]} />
     </>
     //</>
   )
 }
 
-function RandomTitle({title, randomName}){
+function RandomTitle({title}){
   return (
     <>
-    <h3>The name is {randomName}</h3>
     <h3>The title is {title}</ h3>
     </>
   )
