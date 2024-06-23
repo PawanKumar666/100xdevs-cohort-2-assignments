@@ -7,15 +7,15 @@ function App() {
   return (
     <>
     <div>
-      {titles.map((title, index) => <Header title={title} />)}
+      {titles.map((title, index) => <Header title={title} setTitles={setTitles} />)}
     </div>
     </>
   )
 }
 
-function Header({title}){
+function Header({title, setTitles}){
   return (
-    <h1 style={{color: "red", fontSize: "20px", padding: "10px", margin: "10px"}}>{title}</h1>
+    <button style={{color: "red", fontSize: "20px", padding: "10px", margin: "10px"}} onClick={() => setTitles(prevTitles => [...prevTitles, "New Title " + (prevTitles.length + 1)])}>{title}</button>
   )
 }
 
