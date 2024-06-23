@@ -6,9 +6,7 @@ function App() {
   // So we need to return a single element
   return (
     <>
-    <div>
       {titles.map((title, index) => <Header title={title} setTitles={setTitles} />)}
-    </div>
     </>
   )
 }
