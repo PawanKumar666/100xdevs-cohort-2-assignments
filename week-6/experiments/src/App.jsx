@@ -6,9 +6,9 @@ function App() {
   // So we need to return a single element
   return (
     //<> both this and <React.Fragment> are same and doesn't add any extra html tag
-    <React.Fragment>
+    <>
       {titles.map((title, index) => <Header title={title} setTitles={setTitles} />)}
-    </React.Fragment>
+    </>
     //</>
   )
 }
