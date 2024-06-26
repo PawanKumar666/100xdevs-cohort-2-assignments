@@ -30,7 +30,8 @@ function App(){
     }, [])
     */
 
-
+    // JSON parsing is automatically handled in axios
+    // so we don't need to parse the JSON ourselves
     useEffect(() => {
         axios.get("https://sum-server.100xdevs.com/todos")
         .then((res) => {
