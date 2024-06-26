@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import axios from "axios";
 
 function TodoRenderer({title, description}){
     return (
@@ -16,6 +17,7 @@ function TodoCardWrapper({children}){
 function App(){
     const [todos, setTodos] = useState([]);
 
+    /*
     useEffect(() => {
         const intervalId = setInterval(() => {
             fetch("https://sum-server.100xdevs.com/todos")
@@ -26,6 +28,16 @@ function App(){
         }, 5000);
         return () => clearInterval(intervalId);
     }, [])
+    */
+
+
+    useEffect(() => {
+        axios.get("https://sum-server.100xdevs.com/todos")
+        .then((res) => {
+            setTodos(res.data.todos);
+        })
+    }, [])
+
 
     /*
     useEffect(() => {
