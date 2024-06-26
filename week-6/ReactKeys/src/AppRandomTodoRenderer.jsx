@@ -27,6 +27,16 @@ function App(){
         return () => clearInterval(intervalId);
     }, [])
 
+    /*
+    useEffect(() => {
+        fetch("https://sum-server.100xdevs.com/todos")
+        .then(async (res) => {
+        const value = await res.json();
+        setTodos(value.todos);
+        })
+    }, [])
+    */
+
     return (
         <div>
             {todos && todos.map((todo) => {
