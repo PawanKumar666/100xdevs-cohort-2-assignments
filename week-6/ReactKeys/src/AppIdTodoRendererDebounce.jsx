@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <TodoRenderer inputValue={inputValue} setInputValue={setInputValue} todo={todo} />
+      <TodoRenderer key={debouncedTodoId} inputValue={inputValue} setInputValue={setInputValue} todo={todo} />
     </>
   );
 }
