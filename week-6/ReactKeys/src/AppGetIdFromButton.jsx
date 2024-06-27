@@ -2,14 +2,10 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 function App(){
-    return (
-        <>
-        <RenderTodo />
-        </>
-    )
+    return <GatherIdAndPopulateTodo />
 }
 
-function RenderTodo(){
+function GatherIdAndPopulateTodo(){
     const [todoId, setTodoId] = useState(1);
     const [todo, setTodo] = useState(null);
 
