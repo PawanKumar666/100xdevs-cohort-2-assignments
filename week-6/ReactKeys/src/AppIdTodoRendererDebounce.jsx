@@ -19,7 +19,7 @@ function App() {
   }, [inputValue]);
 
   useEffect(() => {
-    if (debouncedTodoId !== null) {
+    if (debouncedTodoId) {
       axios
         .get(`https://sum-server.100xdevs.com/todo?id=${debouncedTodoId}`)
         .then((res) => {
