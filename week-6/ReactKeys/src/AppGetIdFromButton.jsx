@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import {useState, useEffect} from "react";
+import get from "axios";
 
 function App(){
     return <GatherIdAndPopulateTodo />
@@ -10,7 +10,7 @@ function GatherIdAndPopulateTodo(){
     const [todo, setTodo] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://sum-server.100xdevs.com/todo?id=${todoId}`)
+        get(`https://sum-server.100xdevs.com/todo?id=${todoId}`)
         .then((res) => {
             setTodo(res.data.todo);
         })
