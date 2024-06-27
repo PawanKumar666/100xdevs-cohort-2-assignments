@@ -6,7 +6,7 @@ import AppRandomTodoRenderer from './AppRandomTodoRenderer.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // Removed React.StrictMode as it intentionally double-invokes
+  // components and causes unnecessary re-renders
     <AppRandomTodoRenderer />
-  </React.StrictMode>,
 )
