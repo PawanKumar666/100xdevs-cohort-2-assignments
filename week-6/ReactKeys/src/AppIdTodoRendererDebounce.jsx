@@ -18,14 +18,14 @@ function App() {
     };
   }, [inputValue]);
 
+  async function fetchTodo(){
+    const res = await axios.get(`https://sum-server.100xdevs.com/todo?id=${debouncedTodoId}`)
+    setTodo(res.data.todo);
+  }
+
   useEffect(() => {
     if (debouncedTodoId) {
-      axios
-        .get(`https://sum-server.100xdevs.com/todo?id=${debouncedTodoId}`)
-        .then((res) => {
-          console.log(res.data.todo);
-          setTodo(res.data.todo);
-        });
+      fetchTodo();
     }
   }, [debouncedTodoId]);
 
