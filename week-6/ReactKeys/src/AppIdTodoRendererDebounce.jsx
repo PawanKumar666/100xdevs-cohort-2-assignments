@@ -5,7 +5,7 @@ function App() {
   const [todo, setTodo] = useState({});
   const [inputValue, setInputValue] = useState("");
   const [debouncedTodoId, setDebouncedTodoId] = useState(null);
-
+  // This component is not optimal, there are unnecessary re-renders
   useEffect(() => {
     // Debouncing logic
     const handler = setTimeout(() => {
