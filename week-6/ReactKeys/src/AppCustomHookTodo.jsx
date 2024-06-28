@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// Custom Hook 
+// Custom Hook
+// custom hook is a function whose name starts with use and that can call other hooks. 
+// They allow you to extract component logic into reusable functions.
 function useTodos(){
     const [todos, setTodos] = useState([]);
     useEffect(() => {
