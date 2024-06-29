@@ -6,6 +6,7 @@ import axios from "axios";
 // They allow you to extract component logic into reusable functions.
 function useTodos(){
     const [todos, setTodos] = useState([]);
+    console.log(typeof(todos))
     useEffect(() => {
         setInterval(() => {axios.get("https://jsonplaceholder.typicode.com/todos")
         .then((res) => {
