@@ -10,8 +10,8 @@ export function Assignment2() {
         // Update state to force re-render
         forceRender(Math.random());
         parRef.current += 1;
-
     };
+    
     return (
         <div>
             <p>This component has rendered {parRef.current} times.</p>
