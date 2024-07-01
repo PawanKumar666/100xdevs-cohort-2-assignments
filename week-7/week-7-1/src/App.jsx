@@ -1,8 +1,7 @@
 import { lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/Landing';
-import NavBar from './components/NavBar';
 import { Suspense } from 'react';
+import NavBar from './components/NavBar';
 // Why to load all the components and create a big js file to send the user at once, instead of loading the components on demand?
 // Answer: It is not a good idea to load all the components and create a big js file to send the user at once, instead of loading the components on demand.
 // It is better to load the components on demand and send the user to the desired page.
@@ -25,7 +24,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><LandingPage /></Suspense>} />
+        <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><Landing /></Suspense>} />
         <Route path="/dashboard" element={<Suspense fallback={<div>Loading...</div>}><Dashboard /></Suspense>} />
       </Routes>
     </BrowserRouter>
