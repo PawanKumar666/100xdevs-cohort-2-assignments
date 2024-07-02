@@ -1,5 +1,5 @@
 import { useRecoilValue, useRecoilState, RecoilRoot } from "recoil";
-import { countState } from "./store/atoms/count";
+import { countState, isEvenCount } from "./store/atoms/count";
 
 /*
 useRecoilState:
@@ -44,18 +44,22 @@ function Count(){
 function CountRenderer(){
     const count = useRecoilValue(countState);
     return (
-        <h1>Count: {count}</h1>
-    )
+        <>
+            <h1>Count: {count}</h1>
+        </>
+    );
 }
 
 function Buttons(){
     // const count = useRecoilValue(CountContext);
     // const setCount = useSetRecoilState(SetCountContext);
     const [count, setCount] = useRecoilState(countState)
+    const isEven = useRecoilValue(isEvenCount)
     return (
         <>
         <button onClick={() => setCount(count + 1)}>Increment</button>
         <button onClick={() => setCount(count - 1)}>Decrement</button>
+        {isEven && <h3>It is even</h3>}
         </>
     )
 }
