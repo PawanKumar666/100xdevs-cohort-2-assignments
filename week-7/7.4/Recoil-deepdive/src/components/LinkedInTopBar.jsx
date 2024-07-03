@@ -14,10 +14,13 @@ export default function LinkedInTopBarComponent() {
     return (
         <>
             <button>Home</button>
+
             <button onClick={() => incrementState(setMyNetwork, mynetwork)}>My Network - {handleCountLogic(mynetwork)}</button>
             <button onClick={() => incrementState(setNotification, notification)}>Notifications - {handleCountLogic(notification)}</button>
             <button onClick={() => incrementState(setJobs, jobs)}>Jobs - {handleCountLogic(jobs)}</button>
             <button onClick={() => incrementState(setMessages, messages)}>Messages - {handleCountLogic(messages)}</button>
+            
+            <button>Profile</button>
         </>
     );
 }
