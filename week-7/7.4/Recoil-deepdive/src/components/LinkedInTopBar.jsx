@@ -7,18 +7,18 @@ export default function LinkedInTopBarComponent() {
     const [jobs, setJobs] = useRecoilState(Jobs);
     const [messages, setMessages] = useRecoilState(Messages);
 
-    function incrementState(setRecoilProp, prop) {
-        setRecoilProp(prop + 1);
+    function incrementState(setRecoilProp) {
+        setRecoilProp(prop => prop + 1); // We can ignore passing the state value and incrementing by 1 by using the arrow fn syntax
     }
 
     return (
         <>
             <button>Home</button>
 
-            <button onClick={() => incrementState(setMyNetwork, mynetwork)}>My Network - {handleCountLogic(mynetwork)}</button>
-            <button onClick={() => incrementState(setNotification, notification)}>Notifications - {handleCountLogic(notification)}</button>
-            <button onClick={() => incrementState(setJobs, jobs)}>Jobs - {handleCountLogic(jobs)}</button>
-            <button onClick={() => incrementState(setMessages, messages)}>Messages - {handleCountLogic(messages)}</button>
+            <button onClick={() => incrementState(setMyNetwork)}>My Network - {handleCountLogic(mynetwork)}</button>
+            <button onClick={() => incrementState(setNotification)}>Notifications - {handleCountLogic(notification)}</button>
+            <button onClick={() => incrementState(setJobs)}>Jobs - {handleCountLogic(jobs)}</button>
+            <button onClick={() => incrementState(setMessages)}>Messages - {handleCountLogic(messages)}</button>
 
             <button>Profile</button>
         </>
