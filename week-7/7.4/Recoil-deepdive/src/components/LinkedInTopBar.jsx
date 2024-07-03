@@ -1,11 +1,12 @@
-import { MyNetwork, Notifications, Jobs, Messages } from "../store/atoms";
-import { useRecoilState } from "recoil";
+import { MyNetwork, Notifications, Jobs, Messages, TotalCatchUps } from "../store/atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 export default function LinkedInTopBarComponent() {
     const [mynetwork, setMyNetwork] = useRecoilState(MyNetwork);
     const [notification, setNotification] = useRecoilState(Notifications);
     const [jobs, setJobs] = useRecoilState(Jobs);
     const [messages, setMessages] = useRecoilState(Messages);
+    const totalCatchUps = useRecoilValue(TotalCatchUps);
 
     function incrementState(setRecoilProp) {
         setRecoilProp(prop => prop + 1); // We can ignore passing the state value and incrementing by 1 by using the arrow fn syntax
@@ -20,7 +21,7 @@ export default function LinkedInTopBarComponent() {
             <button onClick={() => incrementState(setJobs)}>Jobs - {handleCountLogic(jobs)}</button>
             <button onClick={() => incrementState(setMessages)}>Messages - {handleCountLogic(messages)}</button>
 
-            <button>Profile</button>
+            <button>Profile - {handleCountLogic(totalCatchUps)}</button>
         </>
     );
 }
