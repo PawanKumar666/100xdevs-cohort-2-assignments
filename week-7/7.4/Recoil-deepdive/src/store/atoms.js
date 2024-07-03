@@ -3,12 +3,12 @@ import { atom } from "recoil";
 
 export const MyNetwork = atom({
     key : "MyNetwork",
-    default : 0
+    default : 100
 });
 
 export const Jobs = atom({
     key : "Jobs",
-    default : 0
+    default : 12
 });
 
 export const Messages = atom({
@@ -18,5 +18,5 @@ export const Messages = atom({
 
 export const Notifications = atom({
     key : "Notifications",
-    default : 0
+    default : 3
 });
