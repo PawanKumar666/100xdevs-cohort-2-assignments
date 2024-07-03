@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { MyNetwork, Notifications, Jobs, Messages, TotalCatchUps } from "../store/atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 
@@ -12,6 +13,10 @@ export default function LinkedInTopBarComponent() {
         setRecoilProp(prop => prop + 1); // We can ignore passing the state value and incrementing by 1 by using the arrow fn syntax
     }
 
+    const totalLookUps = useMemo(() => {
+        return mynetwork + notification + jobs + messages;
+    }, [mynetwork, notification, jobs, messages]);
+
     return (
         <>
             <button>Home</button>
@@ -22,6 +27,7 @@ export default function LinkedInTopBarComponent() {
             <button onClick={() => incrementState(setMessages)}>Messages - {handleCountLogic(messages)}</button>
 
             <button>Profile - {handleCountLogic(totalCatchUps)}</button>
+            <button>Memo - {totalLookUps}</button>
         </>
     );
 }
