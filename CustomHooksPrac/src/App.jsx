@@ -20,6 +20,7 @@ function CountComponent(){
   )
 }
 
+// React backward compatibility - we can still use class component
 class CountComponentClass extends React.Component{
   constructor(props){
     super(props)
