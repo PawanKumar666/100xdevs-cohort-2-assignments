@@ -19,4 +19,14 @@ function sum(a: number, b: number) {
 const res = sum(1, 2); // Type for res is automatically inferred as number and 
 // if we hover over invocation of sum method we can see the return type is automatically inferred as number
 
+function isLegalAge(age: number): boolean {
+  return age >= 18;
+}
+
+function callMethodWithArgument(age: number, method: (age: number) => boolean): boolean {
+  return method(age);
+}
+
+let res2 = callMethodWithArgument(18, isLegalAge);
+
 export default App;
