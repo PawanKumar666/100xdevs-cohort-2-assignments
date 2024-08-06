@@ -9,7 +9,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "rootDir": "./src", // It becomes difficult to manage files if we don't split ts and compiled js into different folders
-    "outDir": "./dist", // In rootDir we can have .ts files and in outDir we can have .js files
+    "outDir": "./dist", // In rootDir we can have .ts files and in outDir we can have .js files, dont push .js files to git
 
     /* Bundler mode */
     "moduleResolution": "bundler",
