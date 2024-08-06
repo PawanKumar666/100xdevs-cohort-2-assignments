@@ -24,7 +24,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true // TypeScript will not infer the type of the variable if it is not explicitly specified, more safe and strict, decide based on trade offs
   },
   "include": ["src"]
 }
