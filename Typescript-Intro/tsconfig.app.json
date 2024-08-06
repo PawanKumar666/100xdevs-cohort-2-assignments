@@ -8,6 +8,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "rootDir": "./src", // It becomes difficult to manage files if we don't split ts and compiled js into different folders
+    "outDir": "./dist", // In rootDir we can have .ts files and in outDir we can have .js files
 
     /* Bundler mode */
     "moduleResolution": "bundler",
