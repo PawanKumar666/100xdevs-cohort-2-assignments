@@ -29,4 +29,8 @@ function callMethodWithArgument(age: number, method: (age: number) => boolean): 
 
 let res2 = callMethodWithArgument(18, isLegalAge);
 
+type StringOrNumber = string | number;
+
+const stringOrNumberArray: StringOrNumber[] = [1, "hello", 2, "world"];
+
 export default App;
