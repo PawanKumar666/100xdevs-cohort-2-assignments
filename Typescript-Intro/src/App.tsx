@@ -43,8 +43,4 @@ const stringElement = getFirstElement<string>(["Abc", "Def", "Ghi"]);
 const numberElement = getFirstElement<number>([1, 2, 3, 4, 5]);
 const stringOrNumberElement = getFirstElement<StringOrNumber>([1, "hello", 2, "world"]);
 
-console.log(stringElement);
-console.log(numberElement);
-console.log(stringOrNumberElement);
-
 export default App;
