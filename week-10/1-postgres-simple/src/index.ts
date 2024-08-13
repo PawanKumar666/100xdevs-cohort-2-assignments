@@ -5,6 +5,11 @@ export const client = new Client({
     connectionString: DB_URL
 });
 
+type NumberOrBoolean = number | boolean;
+
+var x: NumberOrBoolean = 1;
+var y: NumberOrBoolean = true;
+
 client.connect();
 
 createTables();
