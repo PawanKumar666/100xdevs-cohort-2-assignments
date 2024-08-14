@@ -32,6 +32,12 @@ let res2 = callMethodWithArgument(18, isLegalAge);
 type StringOrNumber = string | number;
 
 const stringOrNumberArray: StringOrNumber[] = [1, "hello", 2, "world"];
+type NumberOrBoolean = number | boolean;
+
+// Method accepting generic type arrays
+function getLastElement<T>(arr: T[]){
+  return arr[arr.length - 1];
+}
 
 // Generic types for above use case
 
@@ -42,5 +48,6 @@ function getFirstElement<T>(arr: T[]){
 const stringElement = getFirstElement<string>(["Abc", "Def", "Ghi"]);
 const numberElement = getFirstElement<number>([1, 2, 3, 4, 5]);
 const stringOrNumberElement = getFirstElement<StringOrNumber>([1, "hello", 2, "world"]);
+const numOrBool = getLastElement<NumberOrBoolean>(["AddedOnBusTravel", true, "StillAdding", false]);
 
 export default App;
