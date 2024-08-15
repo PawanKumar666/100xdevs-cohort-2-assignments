@@ -6,9 +6,11 @@ export const client = new Client({
 });
 
 type NumberOrBoolean = number | boolean;
+type NumberOrStringOrBoolean = number | string | boolean;
 
 var x: NumberOrBoolean = 1;
 var y: NumberOrBoolean = true;
+var z: NumberOrStringOrBoolean = 1; // Use any number, string, or boolean
 
 client.connect();
 
