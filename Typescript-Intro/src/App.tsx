@@ -1,10 +1,12 @@
+import WrapperCardComponent from "./components/WrapperCard";
+
 function App() {
   const x: number = 1;
   return (
-    <>
-    <h1>{x}</h1>
-    <h1>{greetWithFirstName("John")}</h1>
-    </>
+    <WrapperCardComponent>
+      <h1>{x}</h1>
+      <h1>{greetWithFirstName("John")}</h1>
+    </WrapperCardComponent>
   )
 }
 
